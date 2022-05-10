@@ -31,7 +31,7 @@ class ACTIncomeTracker:
         logging.info("Initiating Statemine connection")
 
         self._interface: SubstrateInterface = SubstrateInterface(
-            url="wss://kusama-statemine-rpc.paritytech.net"
+            url="wss://statemine-rpc.polkadot.io"
         )
 
         logging.info(f"Initiating asset subscriber for incomes obtaining")
@@ -79,4 +79,3 @@ if __name__ == '__main__':
         income_tracker.act_income_event.wait()
         print("Event set")
         income_tracker.act_income_event.clear()
-

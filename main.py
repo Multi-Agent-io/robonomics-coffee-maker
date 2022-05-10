@@ -1,6 +1,6 @@
-import sys
 import logging
-
+import time
+import sys
 
 from classes import CoffeeMachine
 from robonomicsinterface import RobonomicsInterface as RI
@@ -51,3 +51,4 @@ while True:
         except Exception as e:
             logging.error(f"Failed to record Datalog: {e}")
     logging.info("Session over")
+    time.sleep(100)
