@@ -1,54 +1,81 @@
-import logging
-import time
-import sys
-
+from tonclient.types import ClientConfig, ParamsOfQuery
+from tonclient.client import TonClient, DEVNET_BASE_URLS
+from time import sleep
 from classes import CoffeeMachine
-from robonomicsinterface import RobonomicsInterface as RI
-from statemine_monitor import ACTIncomeTracker
-from substrateinterface import Keypair
+from loguru import logger
 
-# set up logging
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s %(levelname)s: %(message)s"
-)
+client_config = ClientConfig()
+client_config.network.endpoints = DEVNET_BASE_URLS    #you can change network here
+client = TonClient(config=client_config)
 
-# initialize an instance of CoffeeMachine object
+
 coffee_machine = CoffeeMachine(
     gpio_outputs=[0, 21, 0, 0, 0, 0, 0]
 )
 
 
-# Define Statemine sss58_address from seed
-seed: str = sys.argv[1]
-keypair = Keypair.create_from_mnemonic(seed, ss58_format=2)
+#change lighthouse address here
+def get_coffe_machine_transactions():
+  return client.net.query(
+        params=ParamsOfQuery(
+            """
+    query {
+      blockchain{
+      account(address:"0:34f36279f650b703e306e6f5bb200d4f47e7852f34da01667c08e8769e601801"){
+        transactions{
+          edges{
+            node{
+              id
+              hash
+              in_msg
+              out_msgs
+              balance_delta(format:DEC)
+              total_fees(format:DEC)
+            }
+          }
+          pageInfo{
+            endCursor
+            hasNextPage
+          }
+        }
+      }
+      }
+    }
+    """
+        )
+    ).result['data']['blockchain']['account']['transactions']['edges']
 
-# Start income tracker
-income_tracker = ACTIncomeTracker(keypair.ss58_address)
 
-# Start coffee machine daemon
-logging.info("Started main coffee machine daemon")
-while True:
-    # wait for money income event
-    income_tracker.act_income_event.wait()
-    income_tracker.act_income_event.clear()
-    operation = coffee_machine.make_a_coffee()
+# def make_coffee():
+#     print('Making coffee...')
 
-    if operation["success"]:
-        logging.info("Operation Successful.")
-        try:
-            # Initiate RobonomicsInterface instance
-            ri_interface = RI(seed=seed)
-            ri_interface.record_datalog(f"Successfully made some coffee!")
-        except Exception as e:
-            logging.error(f"Failed to record Datalog: {e}")
+
+def main():
+
+  print('Start polling...')
+  
+  transactions_count = len(get_coffe_machine_transactions())
+
+  print('Transactions count: ', transactions_count )
+  while True:
+    res = get_coffe_machine_transactions()
+    if len(res) == transactions_count:
+      sleep(1)
+      continue
+    
+    print('Transaction catched!')
+
+    transactions_count = len(res)
+    
+    last_transaction = res[-1]
+
+    if float(last_transaction['node']['balance_delta']) + float(last_transaction['node']['total_fees']) >= 0.5 * 10 ** 9:    #0.5 EVER
+      coffee_machine.make_a_coffee()
     else:
-        logging.error(f"Operation Failed.")
-        try:
-            # Initiate RobonomicsInterface instance
-            ri_interface = RI(seed=seed)
-            ri_interface.record_datalog(f"Failed to make coffee: {operation['message']}")
-        except Exception as e:
-            logging.error(f"Failed to record Datalog: {e}")
-    logging.info("Session over")
-    time.sleep(100)
+      logger.warning(f"{float(last_transaction['node']['balance_delta'])} < {0.5 * 10 ** 9}")
+    
+
+
+if __name__ == '__main__':
+  main()
+
