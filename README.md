@@ -32,6 +32,8 @@ cd ever-sdk-js/packages/lib-node
 npm install -g
 ```
 
+The reason why we can't just npm install @eversdk/lib-node is because this library is not compiled for the ARM architecture.
+
 ## Account management
 If you want to change coffe maching address you can do it in main.js. By default cost of coffe is 0.5 EVER, but you can change it in main.js too.
 
