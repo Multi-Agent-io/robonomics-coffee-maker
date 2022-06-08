@@ -1,11 +1,4 @@
-# Robonomics Coffee
-
-## About
-"Robonomics coffee" - is a smart coffee machine integrated in  [Robonomics Network](https://robonomics.network/).
-This project aims to show Robonomics potential in the IoT sphere by a real-world example. More info and tutorial may be
-found in [Robonomcis Wiki](https://wiki.robonomics.network/docs/en/robonomics-coffee/)
-
-## Software installation
+## Installation
 - Prepare the RPI for Substrate libs ([source](https://www.rust-lang.org/tools/install)):
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh

@@ -1,11 +1,4 @@
-# Robonomics Coffee
-
-## About
-"Robonomics coffee" - is a smart coffee machine integrated in  [Robonomics Network](https://robonomics.network/).
-This project aims to show Robonomics potential in the IoT sphere by a real-world example. More info and tutorial may be
-found in [Robonomcis Wiki](https://wiki.robonomics.network/docs/en/robonomics-coffee/)
-
-## Software installation
+## Installation
 - Install gpiozero library ([source](https://gpiozero.readthedocs.io/en/stable/installing.html)) and reboot:
 ```bash
 sudo apt update
