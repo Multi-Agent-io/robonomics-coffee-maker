@@ -1,3 +1,0 @@
-substrate_interface==1.2.5
-gpiozero==1.6.2
-substrateinterface==1.0.0
