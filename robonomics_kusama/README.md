@@ -15,7 +15,6 @@ rustup default nightly
 ```bash
 sudo apt update
 sudo apt install python3-gpiozero
-sudo pip3 install gpiozero
 sudo reboot
 ```
 - Clone the repository

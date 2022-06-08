@@ -1,2 +1,1 @@
 robonomics-interface==0.1.1.post1
-gpiozero==1.6.2
