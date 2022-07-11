@@ -7,5 +7,5 @@ coffee_machine = CoffeeMachine(
 
 coffee_machine.make_a_coffee()
 
-print("Started making coffe...")
+print("Started making coffee...")
 sys.stdout.flush()
