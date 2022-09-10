@@ -10,8 +10,8 @@ Restart=always
 RestartSec=15
 
 #Edit these lines.
-User = patara
-ExecStart= /usr/bin/node /home/$USER/robonnomics-cofee-maker/everscale/main.js
+User = pi
+ExecStart= /usr/bin/node /home/pi/robonomics-coffee-maker/everscale/main.js
 
 [Install]
 WantedBy=multi-user.target 

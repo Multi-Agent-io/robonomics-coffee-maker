@@ -12,7 +12,7 @@ RestartSec=15
 #Edit these lines. Insert mnemonic key
 User = pi
 Environment=seed=""
-ExecStart= /usr/bin/python3 /home/$USER/robonnomics-cofee-maker/robonomics-kusama/main.py ${seed}
+ExecStart= /usr/bin/python3 /home/pi/robonomics-coffee-maker/robonomics-kusama/main.py ${seed}
 
 [Install]
 WantedBy=multi-user.target 
