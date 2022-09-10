@@ -20,3 +20,8 @@ Also, for each subproject there is a generated `systemd service` file to be put 
 sudo mv robonomics_coffee_maker_everscale.service /etc/systemd/system
 sudo mv robonomics_coffee_maker_robonomics_kusama.service /etc/systemd/system
 ```
+
+For both options GPIOzero required:
+```bash
+sudo apt install python3-gpiozero
+```

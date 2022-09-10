@@ -4,10 +4,7 @@ from time import sleep
 import logging
 
 # set up logging
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s %(levelname)s: %(message)s"
-)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s: %(message)s")
 
 
 def trigger_transistor(channel: int = 18) -> None:

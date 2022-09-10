@@ -10,7 +10,7 @@ Restart=always
 RestartSec=15
 
 #Edit these lines. Insert mnemonic key
-User = patara
+User = pi
 Environment=seed=""
 ExecStart= /usr/bin/python3 /home/$USER/robonnomics-cofee-maker/robonomics-kusama/main.py ${seed}
 

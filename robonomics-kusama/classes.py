@@ -1,12 +1,10 @@
-import typing as tp
-import rpi_funcs as rpi
 import logging
+import rpi_funcs as rpi
+import traceback
+import typing as tp
 
 # set up logging
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s %(levelname)s: %(message)s"
-)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s: %(message)s")
 
 
 class CoffeeMachine:
@@ -21,7 +19,7 @@ class CoffeeMachine:
             "steam": 0,
             "rinse": 0,
             "one_big_cup": 0,
-            "two_big_cups": 0
+            "two_big_cups": 0,
         }
 
         # apply provided values to their buttons
@@ -37,12 +35,12 @@ class CoffeeMachine:
 
         :returns: {"success": bool, "message": str}"""
 
-        rpi.trigger_transistor(self.button_map["one_small_cup"])
-
-        operation = {
-            "success": True,
-            "message": "operation success"
-        }
-
-        logging.info("Made a coffee")
-        return operation
+        try:
+            rpi.trigger_transistor(self.button_map["one_small_cup"])
+            operation = {"success": True, "message": "operation success"}
+            logging.info("Made a coffee")
+        except Exception:
+            logging.error(f"Failed to make coffee: {traceback.format_exc()}")
+            operation = {"success": False, "message": "operation success"}
+        finally:
+            return operation
