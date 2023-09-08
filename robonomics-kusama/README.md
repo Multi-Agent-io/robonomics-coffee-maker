@@ -29,6 +29,8 @@ pip3 install -r requirements.txt
 ## Account management
 To use the coffee machine, you'll need a Polkadot account. Create a new account using your preferred extension. If you're unsure how to do this, please refer to the official [documentation](https://support.polkadot.network/support/solutions/articles/65000098878-how-to-create-a-dot-account). **Ensure that you keep your mnemonic phrase secret and secure.**
 
+You can modify the coffee machine address, the cost of one cup of coffee, or the GPIO codes for operating the coffee machine in the [main.py](https://github.com/Multi-Agent-io/robonomics-coffee-maker/blob/master/robonomics-kusama/main.py) file.
+
 ## Brew coffee using the blockchain coffee machine
 Run this within the repository folder:
 ```bash
