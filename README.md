@@ -63,3 +63,6 @@ sudo mv robonomics_coffee_maker_robonomics_kusama.service /etc/systemd/system
 ## Exploring further development
 
 In conclusion, this Proof of Concept (POC) project has potential for further improvement. Notably, there's room for enhancing aesthetics by concealing wires, and the opportunity to introduce additional functionalities.
+
+---
+Powered by [Robonomics](https://robonomics.network), created by [Multi-Agent.io](https://multi-agent.io)
