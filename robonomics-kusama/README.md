@@ -32,6 +32,9 @@ Run this within the repository folder:
 ```bash
 python3 main.py "mnemonic phrase of a Polkadot account for the coffee machine"
 ```
-You can send XRT tokens from another account. Once there is incoming XRT, the Raspberry Pi triggers GPIO pin 18, and the coffee machine starts brewing coffee!
+Now, when you send 1 XRT to the coffee machine address, the subscriber will detect the transaction, activate the espresso button (in our case, the Raspberry Pi triggers GPIO pin 18), and the coffee machine will start brewing coffee!"
 
-[Discover how to explore further development](https://github.com/Multi-Agent-io/robonomics-coffee-maker/tree/master#exploring-further-development)
+## QR codes
+For convenient transfers, you can utilize a QR code. To do this, encode the Polkadot account address that you've created for the coffee machine into a QR code.
+
+## [Discover how to explore further development](https://github.com/Multi-Agent-io/robonomics-coffee-maker/tree/master#exploring-further-development)
