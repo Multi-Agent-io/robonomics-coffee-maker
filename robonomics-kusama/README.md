@@ -1,47 +1,37 @@
-## Installation
-- Prepare the RPI for Substrate libs ([source](https://www.rust-lang.org/tools/install)):
+This guide demonstrates how to operate [an automated coffee machine on the blockchain](https://github.com/Multi-Agent-io/robonomics-coffee-maker/tree/master) within the Robonomics parachain, a part of the Polkadot ecosystem.
+
+## Software installation
+
+- Prepare the Raspberry Pi for Substrate libraries by installing [Rust](https://www.rust-lang.org/tools/install):
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup default nightly
 ```
-- Install gpiozero library ([source](https://gpiozero.readthedocs.io/en/stable/installing.html)) and reboot:
+
+- Install [GPIO Zero library](https://gpiozero.readthedocs.io/en/stable/installing.html) and reboot the Raspberry Pi:
 ```bash
 sudo apt update
 sudo apt install python3-gpiozero
 sudo reboot
 ```
-- Clone the repository
+
+- Clone the repository:
 ```bash
 git clone https://github.com/Multi-Agent-io/robonomics-coffee-maker
 ```
-- Install project requirements
+- Install project requirements:
 ```bash
 pip3 install -r requirements.txt
 ```
 
 ## Account management
-On your PC install [Polkadot Extension](https://polkadot.js.org/extension/) and register a coffee-machine account there. **Save 
-mnemonic seed phrase as it is going to be used later.**
-
-Logging actions in Robonomics is optional, you will need XRT on 
-[parachain.robonomics.network](https://parachain.robonomics.network/) for coffee-machine account (it is the same across
-networks) for this. If not, there will simply be an error message *"Balance too low."*
+To use the coffee machine, you'll need a Polkadot account. Create a new account using your preferred extension. If you're unsure how to do this, please refer to the official [documentation](https://support.polkadot.network/support/solutions/articles/65000098878-how-to-create-a-dot-account). **Ensure that you keep your mnemonic phrase secret and secure.**
 
 ## Run Robonomics coffee
-Run this in repo folder:
+Run this within the repository folder:
 ```bash
-python3 main.py <previously saved seed>
+python3 main.py "mnemonic phrase of a Polkadot account for the coffee machine"
 ```
-You can send tokens from another account created the same way via `assets:transfer` *extrinsic* on 
-[Statemine](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama-statemine-rpc.paritytech.net#/explorer).
+You can send XRT tokens from another account. Once there is incoming XRT, the Raspberry Pi triggers GPIO pin 18, and the coffee machine starts brewing coffee!
 
-As soon as there is an income (positive change in `assets:account` *storage function* for address 
-derived from seed and for token id `3077`) the RPI triggers GPIO pin 18 and coffee machine starts making coffee!
-
-## Things to point out
-- This is a POC of a blockchain-driven IoT device, it has things to improve, wires to hide and functionality to implement
-- Token ID, the one, coffee-machine is waiting to receive is edited
-[here](https://github.com/Multi-Agent-io/robonomics-coffee-maker/blob/master/statemine_monitor.py#L27), so you can use your own token
-- Right now the only thing that matters for income tracker is the positive difference between current and previous
-asset balance. This may be filtered [code](https://github.com/Multi-Agent-io/robonomics-coffee-maker/blob/master/statemine_monitor.py#L59).
-- Powered by [Robonomics](https://robonomics.network/), made by [Multi-Agent.io](https://multi-agent.io/).
+[Discover how to explore further development](https://github.com/Multi-Agent-io/robonomics-coffee-maker/tree/master#exploring-further-development)
