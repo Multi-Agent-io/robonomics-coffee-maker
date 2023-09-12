@@ -22,22 +22,35 @@ Additionally, make sure to have a set of screwdrivers, a soldering iron with sol
 
 Our objective is to detach the front panel (which won't be used anymore) and separate the control PCB. You can find [a helpful tutorial](https://youtu.be/7Y5NCePD0PM?feature=shared) on YouTube as a reference.
 
+![Disassemble the coffee machine](/readme-assets/1-blockchain-smart-coffee-machine.jpg?raw=true)
+
 ### Solder two wires to the required button
 
 Solder them to the isolated contacts, which, in our case, are the two bottom contacts. You can use any wires, but remember that one of them should be an M-wire for connecting it to the breadboard later.
 
+![Solder wires to the coffee machine](/readme-assets/2-blockchain-smart-coffee-machine.jpg?raw=true)
+
 ### Reassemble the coffee machine
+
 Now, reassemble the coffee machine by reinstalling the PCB control board. Keep the front panel removed.
+
+![Reassemble the coffee machine for connecting to Raspberry Pi](/readme-assets/3-blockchain-smart-coffee-machine.jpg?raw=true)
 
 ### Connecting the coffee machine to Raspberry Pi
 
 #### Circuit
 
-The complete circuit is shown below. It's a straightforward transistor switch configuration. We employed R1=1kΩ, an NPN transistor Q1 (with specifications hfe=40, Uce>5V, Ic>0.015A; we have a sample here, but almost any general-purpose transistor will suffice since it's acting as a switch), and a small 3.3V diode D in the base circuit, which we found in our lab's storage. Alternatively, you can use a MOSFET transistor.
+![The complete circuit for connecting the coffee machine and the Raspberry Pi](/readme-assets/4-blockchain-smart-coffee-machine.png?raw=true)
+
+The complete circuit is shown here. It's a straightforward transistor switch configuration. We employed R1=1kΩ, an NPN transistor Q1 (with specifications hfe=40, Uce>5V, Ic>0.015A; we have a sample here, but almost any general-purpose transistor will suffice since it's acting as a switch), and a small 3.3V diode D in the base circuit, which we found in our lab's storage. Alternatively, you can use a MOSFET transistor.
 
 #### Wires
 
+![Connect the wires](/readme-assets/5-blockchain-smart-coffee-machine.jpg?raw=true)
+
 Connect the wires labeled as RPI GND and RPI GPIO Pin to pins GND and 21, respectively, according to the RPI GPIO scheme shown below. The wires marked as Button+ and Button- should be connected to the left button contact and right button contact, respectively.
+
+![the RPI GPIO scheme](/readme-assets/6-blockchain-smart-coffee-machine.png?raw=true)
 
 ## Software installation
 

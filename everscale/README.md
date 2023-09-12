@@ -39,6 +39,7 @@ node main.js
 Now, when you send 0.5 EVER to the coffee machine address, poller will catch transaction and execute `make_coffee.py`, and the coffee machine will start brewing coffee!
 
 ## QR codes
+![QR codes for paying to the blockchain coffee machine](../readme-assets/qrcodes-blockchain-smart-coffee-machine.jpg?raw=true)
 For convenient transfers, you can utilize a QR code. To do this, encode `ton://transfer/YourCoffeeMachineAddress?amount=AmountIngrams` into a QR code.
 
 ## [Discover how to explore further development](https://github.com/Multi-Agent-io/robonomics-coffee-maker/tree/master#exploring-further-development)
