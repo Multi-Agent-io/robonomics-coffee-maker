@@ -2,11 +2,6 @@ This guide demonstrates how to operate [an automated coffee machine on the block
 
 ## Software installation
 
-- Prepare the Raspberry Pi for Substrate libraries by installing [Rust](https://www.rust-lang.org/tools/install):
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-rustup default nightly
-```
 
 - Install [GPIO Zero library](https://gpiozero.readthedocs.io/en/stable/installing.html) and reboot the Raspberry Pi:
 ```bash
